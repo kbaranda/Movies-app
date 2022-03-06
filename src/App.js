@@ -1,17 +1,20 @@
 import React, { useEffect, useState} from 'react';
 import Movie from './components/Movie';
+import PageNav from './components/PageNav';
 import Search from './components/Search'
 import TopButton from './components/TopButton';
 
-const FEATURED_API = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=cc0dc2db226d7369c3186f56b86a382a&page=1";
 
 function App() {
   const [movies, setMovies] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1)
+  
+  const FEATURED_API = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=cc0dc2db226d7369c3186f56b86a382a";
 
   useEffect(() => {
     getMovies(FEATURED_API)
-  }, []);
-
+  }, []); 
+  
   const getMovies = (API) => {
     fetch(API)
     .then(resp => resp.json())
@@ -19,8 +22,7 @@ function App() {
       setMovies(data.results)
     })
   }
-
-
+  console.log(movies)
 
   return (
     <>
@@ -35,6 +37,11 @@ function App() {
           />
         ))}
       </div>
+      <PageNav
+      currentPage={currentPage}
+      setCurrentPage={setCurrentPage}
+      getMovies={getMovies}
+      />
     </>
   );
 }

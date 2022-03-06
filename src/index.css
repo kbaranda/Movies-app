@@ -20,5 +20,6 @@ header {
   background-color: #373b69;
   display: flex;
   padding: 1rem;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
 }
