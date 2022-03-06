@@ -1,15 +1,38 @@
-import React from 'react';
+import React, { useEffect, useState} from 'react';
 import Movie from './components/Movie';
+import Search from './components/Search'
+
+const FEATURED_API = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=cc0dc2db226d7369c3186f56b86a382a&page=1";
 
 function App() {
-  const movies = ["1", "2", "3"]
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    getMovies(FEATURED_API)
+  }, []);
+
+  const getMovies = (API) => {
+    fetch(API)
+    .then(resp => resp.json())
+    .then(data => {
+      console.log(data)
+      setMovies(data.results);
+    })
+  }
 
   return (
-    <div className="App">
-      {movies.map((movie) => (
-        <Movie />
-      ))}
-    </div>
+    <>
+      <Search
+      getMovies={getMovies}
+      />
+      <div className="movie-container">
+        {movies.length > 0 && movies.map((movie) => (
+          <Movie {...movie}
+          key={movie.id}
+          />
+        ))}
+      </div>
+    </>
   );
 }
 
