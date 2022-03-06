@@ -28,9 +28,11 @@ function App() {
     <>
       <TopButton 
       />
-      <Search
-      getMovies={getMovies}
-      />
+      <div className="header">
+        <Search
+        getMovies={getMovies}
+        />
+      </div>
       <div className="movie-container">
         {movies.length > 0 && movies.map((movie) => (
           <Movie {...movie}

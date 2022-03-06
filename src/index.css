@@ -19,7 +19,13 @@ body{
 header {
   background-color: #373b69;
   display: flex;
-  padding: 1rem;
+  padding: .5rem;
   justify-content: space-between;
   align-items: center;
+}
+
+.header{
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
 }
