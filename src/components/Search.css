@@ -1,0 +1,22 @@
+.search{
+ border: 2px solid #22254b;
+ border-radius: 50px;
+ background-color: transparent;
+ color: white;
+ font-family: inherit;
+ font-size: 1.2rem;
+ padding: 0.5rem 1.5rem;
+}
+
+.search:focus {
+ outline: none;
+}
+
+.title{
+ cursor: pointer;
+ transition: all 1s;
+}
+
+.title:hover {
+ transform: scale(1.1);
+}

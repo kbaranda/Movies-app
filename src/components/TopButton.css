@@ -1,0 +1,12 @@
+.top-btn{
+ position: fixed; 
+ display: flex;
+ justify-content: flex-end;
+ right: 40px;
+ bottom: 40px;
+ font-size: 3rem;
+ z-index: 1;
+ cursor: pointer;
+ color: #464ea9;
+ box-shadow: 3px 3px 5px rgba(0,0,0.1);
+}
