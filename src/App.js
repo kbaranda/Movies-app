@@ -7,13 +7,15 @@ import TopButton from './components/TopButton';
 
 function App() {
   const [movies, setMovies] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1)
+  const [currentPage, setCurrentPage] = useState(2)
   
   const FEATURED_API = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=cc0dc2db226d7369c3186f56b86a382a";
 
   useEffect(() => {
-    getMovies(FEATURED_API)
+    getMovies(FEATURED_API + "&page=1")
   }, []); 
+
+
   
   const getMovies = (API) => {
     fetch(API)
@@ -22,11 +24,10 @@ function App() {
       setMovies(data.results)
     })
   }
-  console.log(movies)
-
   return (
     <>
-      <TopButton />
+      <TopButton 
+      />
       <Search
       getMovies={getMovies}
       />
