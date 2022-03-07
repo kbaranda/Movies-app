@@ -23,17 +23,6 @@ function App() {
     })
   }
 
-  const handleNext = (page) => {
-    setCurrentPage(page)
-    console.log("next2")
-    getMovies(PAGE_API + currentPage)
-  }
-  const handleBack = (page) => {
-    setCurrentPage(page)
-    console.log("back2")
-    getMovies(PAGE_API + currentPage)
-  }
-
   return (
     <>
       <TopButton 
@@ -53,8 +42,6 @@ function App() {
       </div>
       <PageNav
       getMovies={getMovies}
-      handleNext={handleNext}
-      handleBack={handleBack}
       currentPage={currentPage}
       setCurrentPage={setCurrentPage}
       />

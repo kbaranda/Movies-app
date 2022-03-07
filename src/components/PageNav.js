@@ -3,7 +3,7 @@ import {FiChevronsRight, FiChevronsLeft} from "react-icons/fi"
 import "./PageNav.css"
 import { toTheTop } from './TopButton';
 
-const PageNav = ({currentPage, setCurrentPage, getMovies, handleNext, handleBack}) => {
+const PageNav = ({currentPage, setCurrentPage, getMovies}) => {
   const PAGE_API = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=cc0dc2db226d7369c3186f56b86a382a&page=";
 
  const next = () => {
