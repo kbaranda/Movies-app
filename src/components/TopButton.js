@@ -10,9 +10,6 @@ export const toTheTop = () => {
 }
 
 const TopButton = () => {
- const [visible, setVisible] = useState(false)
-
-
   return (
      <BsArrowUpSquareFill onClick={toTheTop} className="top-btn"/>
   )

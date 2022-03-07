@@ -1,5 +1,5 @@
-API information
+This is a basic Movie Applicaiton built with React.Js and styled with CSS. It shows movies from "The Movie Database API" linked below.
 
-featured: "https://api.themoviedb.org/3/movie?sort_by=popularity.desc&api_key=cc0dc2db226d7369c3186f56b86a382a"
-images: "https://image.tmdb.org/t/p/w500"
-search:"https://api.themoviedb.org/3/search/movie?&api_key=cc0dc2db226d7369c3186f56b86a382a&query="
+https://www.themoviedb.org/
+
+Basic Components included Movie cards which display a movie poster, title, rating, and upon hover shows an overview of the movie. Movies are based on popularity from the live database website. My application also includes a button location on the bottom right which when pressed takes you to the top of the page. A search bar that finds movies based on you input and a page navigation on the bottom of the page.
