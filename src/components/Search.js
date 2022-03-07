@@ -4,7 +4,7 @@ import "./Search.css"
 const SEARCH_API = "https://api.themoviedb.org/3/search/movie?&api_key=cc0dc2db226d7369c3186f56b86a382a&query=";
 
 
-const Search = ({getMovies}) => {
+const Search = ({getMovies, setCurrentPage}) => {
  const [searchTerm, setSearchTerm] = useState("")
 
  const handleSubmit = (e) => {
@@ -21,6 +21,7 @@ const Search = ({getMovies}) => {
 
  const takeMeHome = () => {
    getMovies("https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=cc0dc2db226d7369c3186f56b86a382a")
+   setCurrentPage(1);
  }
 
   return (

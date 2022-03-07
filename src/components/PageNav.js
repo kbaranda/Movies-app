@@ -3,21 +3,24 @@ import {FiChevronsRight, FiChevronsLeft} from "react-icons/fi"
 import "./PageNav.css"
 import { toTheTop } from './TopButton';
 
-const PAGE_API = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=cc0dc2db226d7369c3186f56b86a382a&page=";
-const PageNav = ({currentPage, setCurrentPage,getMovies}) => {
- const back = () => {
-  console.log("back")
- }
+const PageNav = ({currentPage, setCurrentPage, getMovies, handleNext, handleBack}) => {
+  const PAGE_API = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=cc0dc2db226d7369c3186f56b86a382a&page=";
+
  const next = () => {
-  getMovies(PAGE_API + currentPage)
-  setCurrentPage(currentPage+1)
-  toTheTop()
+   currentPage++
+   setCurrentPage(currentPage)
+   getMovies(PAGE_API + currentPage)
+  }
+  const back = () => {
+    currentPage--
+    setCurrentPage(currentPage)
+    getMovies(PAGE_API + currentPage)
  }
 
   return (
    <div className="page-navi">
-    <FiChevronsLeft onClick={back}/>
-     <h3>{currentPage-1}</h3>
+     {currentPage === 1 ? (<FiChevronsLeft onClick={back} style={{display: "none"}}/>) : (<FiChevronsLeft onClick={back} style={{display: "block"}}/>)}
+     <h3>{currentPage}</h3>
     <FiChevronsRight onClick={next}/>
    </div>
   )

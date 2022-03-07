@@ -7,16 +7,14 @@ import TopButton from './components/TopButton';
 
 function App() {
   const [movies, setMovies] = useState([]);
-  const [currentPage, setCurrentPage] = useState(2)
+  const [currentPage, setCurrentPage] = useState(1)
   
-  const FEATURED_API = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=cc0dc2db226d7369c3186f56b86a382a";
-
+  const PAGE_API = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=cc0dc2db226d7369c3186f56b86a382a&page=";
+  
   useEffect(() => {
-    getMovies(FEATURED_API + "&page=1")
+    getMovies(PAGE_API + currentPage)
   }, []); 
 
-
-  
   const getMovies = (API) => {
     fetch(API)
     .then(resp => resp.json())
@@ -24,12 +22,25 @@ function App() {
       setMovies(data.results)
     })
   }
+
+  const handleNext = (page) => {
+    setCurrentPage(page)
+    console.log("next2")
+    getMovies(PAGE_API + currentPage)
+  }
+  const handleBack = (page) => {
+    setCurrentPage(page)
+    console.log("back2")
+    getMovies(PAGE_API + currentPage)
+  }
+
   return (
     <>
       <TopButton 
       />
       <div className="header">
         <Search
+        setCurrentPage={setCurrentPage}
         getMovies={getMovies}
         />
       </div>
@@ -41,9 +52,11 @@ function App() {
         ))}
       </div>
       <PageNav
+      getMovies={getMovies}
+      handleNext={handleNext}
+      handleBack={handleBack}
       currentPage={currentPage}
       setCurrentPage={setCurrentPage}
-      getMovies={getMovies}
       />
     </>
   );
